@@ -1,4 +1,5 @@
 require 'sinatra'
+require 'sinatra/json'
 require 'bundler'
 
 Bundler.require
@@ -9,12 +10,23 @@ DataMapper.finalize
 DataMapper.auto_migrate!
 
 
-get '/' do
-	"hello" 
-end
+  get '/' do
+  	"hello" 
+  end
 
-get '/reviews' do
-	content_type :json
-	reviews = Review.all
-	reviews.to_json
-end
+  get '/reviews' do
+   content_type :json
+
+   reviews = Review.all
+   reviews.to_json
+  end
+
+ post '/reviews' do
+  review = Review.new params[:review]
+  if review.save
+   status 201
+  else
+    status 500
+      json review.errors.full_messages
+  end
+ end
