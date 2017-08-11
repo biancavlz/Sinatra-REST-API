@@ -11,7 +11,7 @@ DataMapper.auto_migrate!
 
 
 get '/' do
-  "hello"
+  "With this API example, you will get a functional and basic RESTful API with Sinatra."
 end
 
 get '/reviews' do
@@ -21,7 +21,15 @@ get '/reviews' do
   reviews.to_json
 end
 
+get '/review/:id' do
+  content_type :json
+
+  review = Review.get params[:id]
+  review.to_json
+end
+
 post '/reviews' do
+  content_type :json
   review = Review.new params[:review]
 
   if review.save
@@ -33,6 +41,7 @@ post '/reviews' do
 end
 
 put '/reviews/:id' do
+  content_type :json
   review = Review.get.params[:id]
 
   if review.update params[:review]
@@ -45,7 +54,9 @@ put '/reviews/:id' do
 end
 
 delete '/reviews/:id' do
+  content_type :json
   review = Review.get params[:id]
+
   if review.destroy
     status 200
     json "Review was sucessfully removed."
