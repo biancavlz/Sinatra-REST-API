@@ -43,3 +43,14 @@ put '/reviews/:id' do
     json review.errors.full_messages
   end
 end
+
+delete '/reviews/:id' do
+  review = Review.get params[:id]
+  if review.destroy
+    status 200
+    json "Review was sucessfully removed."
+  else
+    status 500
+    json "It was a problem removing the review."
+  end
+end
