@@ -12,7 +12,7 @@ This is a basic Sinatra RESTful API.
 
 ### Star the service with:
 
-```ruby -Ilib application.rb```
+```bundle exec ruby -Ilib application.rb```
 
 ### Do a request via curl
 

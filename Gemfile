@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'sinatra', '>=1.0'
+gem 'sinatra', '~> 2.0.1'
 gem 'sinatra-contrib'
 gem 'rake'
 gem 'data_mapper'
