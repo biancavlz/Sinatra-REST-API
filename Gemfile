@@ -10,3 +10,5 @@ gem 'dm-timestamps'
 gem 'dm-validations'
 gem 'dm-aggregates'
 gem 'dm-migrations'
+gem 'bcrypt'
+gem "rack", ">= 2.0.6"
